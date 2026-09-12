@@ -2,11 +2,14 @@
 
 **An Explainable Transaction Intelligence Framework for Banking Risk, Financial Crime Monitoring, and Alert Prioritization**
 
+
+
 > I built an explainable transaction-monitoring analytics framework that combines behavioural, transactional and
 > network signals to prioritise potential AML-typology and mule-account activity for investigation - and measured,
 > on held-out accounts and later weeks, where that complexity helps and where it does not.
 
 | | |
+|---|---|
 | **What** | Weekly, point-in-time monitoring of 120,558 synthetic transfers between 20,000 accounts: 12 documented rules, an explainable integrated risk score, a prioritised alert queue with ranked evidence, network/mule analytics, and a Streamlit investigation dashboard. |
 | **Why** | Banks must find the few accounts worth investigating without drowning analysts in alerts. In India, card/internet frauds were 56% of 2024-25 bank fraud cases but 1.4% of value (RBI) - many small, fast cases. |
 | **Data** | Official IBM AMLSim sample (Apache-2.0): sender, receiver, amount, day step, AML-typology label. No payment-fraud label exists, so no supervised fraud detection is claimed. |
@@ -113,3 +116,4 @@ Suspicious does not mean criminal; an anomaly is not fraud; a mule-risk candidat
 signal does not establish money laundering. Automated scores should support, never replace, human investigation.
 The data are synthetic and represent no real customer or bank. This is an educational analytics project: it is not
 an RBI-compliant or production AML system and provides no legal, regulatory or financial advice.
+
