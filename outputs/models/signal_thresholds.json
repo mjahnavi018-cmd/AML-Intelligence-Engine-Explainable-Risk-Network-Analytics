@@ -1,0 +1,18 @@
+{
+  "thresholds": {
+    "TXN-01": 589.65,
+    "VEL-01": 6.0,
+    "BEH-01": 3.2727272727272725,
+    "BEH-02": 6.0,
+    "BEH-03": 2.362049045389842,
+    "BEH-04": 1.0,
+    "AML-01": 0.8,
+    "AML-02": 2.0,
+    "AML-03": 1.0,
+    "NET-01": 14.0,
+    "NET-02": 7.0,
+    "NET-03": 0.00041806603997584146
+  },
+  "calibration": "development weeks 5-12, label-free quantiles",
+  "quantile": 0.99
+}
