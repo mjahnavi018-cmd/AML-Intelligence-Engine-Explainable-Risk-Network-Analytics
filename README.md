@@ -1,131 +1,156 @@
 # AML-Intelligence-Engine-Explainable-Risk-Network-Analytics
-### Can explainable transaction signals identify high-risk accounts without overwhelming investigators?
 
-An end-to-end transaction-monitoring framework combining **behavioural, transactional, rule-based, and network signals** to prioritise potential AML activity and provide investigators with evidence explaining why an account was flagged.
+### An Explainable Transaction Intelligence Framework for Banking Risk, Financial Crime Monitoring, and Alert Prioritization
 
----
+I built an explainable transaction-monitoring framework that combines **behavioural, transactional, and network signals** to prioritise potential AML-typology and mule-account activity for investigation, while measuring where additional modelling complexity improves detection and where it does not.
 
-## Problem
-
-Banks need to identify suspicious accounts while controlling the number of alerts sent to investigators.
-
-This project asks:
-
-* Can multiple signals outperform simple transaction rules?
-* Can alert volume be reduced without losing useful detections?
-* Which signals provide transferable AML risk information?
-* Can risk scores remain explainable?
-* Can network behaviour help identify potential mule accounts?
-
----
-
-## Data
-
-|                  |                       |
-| ---------------- | --------------------- |
-| **Dataset**      | IBM AMLSim            |
-| **Transactions** | 120,558               |
-| **Accounts**     | 20,000                |
-| **Monitoring**   | Weekly, point-in-time |
-| **Data type**    | Synthetic             |
-| **Labels**       | AML typology activity |
-
-> AMLSim does not provide a payment-fraud label, so this project does **not** claim supervised fraud detection.
+|                    |                                                                                                                                                                                                                                              |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **What**           | Weekly, point-in-time monitoring of **120,558 synthetic transfers across 20,000 accounts**, using 12 documented rules, an integrated risk score, a prioritised alert queue, network/mule analytics, and a Streamlit investigation dashboard. |
+| **Why**            | AML monitoring must identify the accounts worth investigating without overwhelming analysts with low-quality alerts.                                                                                                                         |
+| **Data**           | IBM AMLSim synthetic transaction data: sender, receiver, amount, day step, and AML-typology labels. No payment-fraud label exists, so no supervised fraud-detection claim is made.                                                           |
+| **Method**         | SQL + Python pipeline → data audit → point-in-time features → rule thresholds → non-negative logistic risk score → priority tiers → held-out evaluation → leakage and robustness checks.                                                     |
+| **Result**         | **215 alerts at 86.5% precision** vs **807 at 40.6%** for an amount + velocity rule — **73% fewer alerts** with higher precision.                                                                                                            |
+| **Business value** | Quantifies the detection–workload trade-off and provides investigators with **“why flagged” evidence** for each account.                                                                                                                     |
+| **Limitations**    | Synthetic data, generator artefacts, account-level typology labels, unrealistic prevalence, and no KYC, payment-type, timestamp, or loss information.                                                                                        |
 
 ---
 
 ## Architecture
 
-```text
-Transactions
-     ↓
-Data Audit & Cleaning
-     ↓
-Point-in-Time Features
-     ↓
-Behavioural + Transactional + Network Signals
-     ↓
-Explainable Rules
-     ↓
-Integrated Risk Score
-     ↓
-Alert Prioritisation
-     ↓
-Held-Out Evaluation
-     ↓
-Network / Mule Analysis
-     ↓
-Investigation Dashboard
+```mermaid
+flowchart LR
+
+    A[IBM AMLSim Raw Data] --> B[Data Audit<br/>42 Checks + Artifact Detection]
+    B --> C[Cleaning + SQLite<br/>15 SQL Queries + QC]
+    C --> D[Point-in-Time Weekly Features<br/>No Look-Ahead]
+    D --> E[Signal Engine<br/>Transaction + Velocity + Behaviour + Network]
+    E --> F[Integrated Risk Score<br/>Non-Negative Weights]
+    F --> G[Alert Queue<br/>Priority + Evidence]
+    G --> H[Held-Out Evaluation]
+    G --> I[Investigation Dashboard]
+    D --> J[Network & Mule Analytics]
+    J --> E
 ```
 
----
-
-## Approach
-
-| Component                | What was done                                                 |
-| ------------------------ | ------------------------------------------------------------- |
-| **Data audit**           | Quality checks, distributions and generator artefact analysis |
-| **Feature engineering**  | Point-in-time behavioural and transaction signals             |
-| **Rule engine**          | 12 documented AML-oriented rules                              |
-| **Risk scoring**         | Non-negative logistic integrated score                        |
-| **Alert prioritisation** | Risk tiers and ranked alert queue                             |
-| **Evaluation**           | Precision, recall, PR-AUC and workload analysis               |
-| **Robustness**           | Held-out accounts, later weeks and leakage checks             |
-| **Network analysis**     | Counterparty relationships and mule-account patterns          |
-| **Dashboard**            | Streamlit investigation workflow                              |
+**Analyst workflow:**
+**Transaction → Signal → Alert → Evidence → Account Context → Network Context → Priority → Analyst Review → Decision**
 
 ---
 
-## Key Results
+## Key Findings
 
-**Held-out accounts, test weeks 13–21, base rate 9.2%:**
+Evaluation was performed on **held-out accounts during test weeks 13–21**, with a base rate of approximately **9.2%**.
 
-| Approach                  |  Alerts | Precision |    Recall |    PR-AUC |
-| ------------------------- | ------: | --------: | --------: | --------: |
-| Large-amount rule         |     488 |     11.5% |      5.4% |     0.111 |
-| Amount + velocity         |     807 |     40.6% |     24.4% |     0.445 |
-| ≥ 2 signal families       |     316 |     75.0% |     16.8% |     0.366 |
-| **Integrated risk score** | **215** | **86.5%** | **14.1%** | **0.457** |
+| Approach                  |  Alerts | Alert Precision | Account Recall | False-Positive Accounts |    PR-AUC |
+| ------------------------- | ------: | --------------: | -------------: | ----------------------: | --------: |
+| Large-amount rule         |     488 |           11.5% |           5.4% |                     305 |     0.111 |
+| Amount + velocity         |     807 |           40.6% |          24.4% |                     336 |     0.445 |
+| ≥ 2 signal families       |     316 |           75.0% |          16.8% |                      59 |     0.366 |
+| **Integrated risk score** | **215** |       **86.5%** |      **14.1%** |                  **20** | **0.457** |
+| Unconstrained logistic*   |     709 |           98.4% |          58.4% |                      11 |     0.713 |
+
+*Diagnostic comparison only; not treated as deployable.
 
 ### What the results show
 
-* **73% fewer alerts** than the amount + velocity rule.
-* Precision increased from **40.6% → 86.5%**.
-* Velocity provides most of the transferable predictive signal.
-* The integrated score improves ranking only marginally over velocity (**ΔPR-AUC = 0.012**).
-* Network analysis suggests **collection + forwarding** is more specific for mule-risk than fan-in alone.
-* Unconstrained ML learned simulator artefacts, demonstrating why predictive performance alone is not sufficient.
+1. **Large amount alone is weak.** Typology transfers are smaller than normal transfers in this simulated dataset.
+2. **The integrated score reduces workload.** It produces **73% fewer alerts** than the amount + velocity baseline while achieving much higher precision.
+3. **Velocity carries most of the transferable signal.** The integrated score improves PR-AUC only marginally over velocity (**0.457 vs 0.445**).
+4. **Unconstrained ML can learn simulator artefacts.** The unconstrained model exploited generator-specific behaviour that would not necessarily generalise to real banking data.
+5. **Unusual does not mean suspicious.** Network connectivity alone is insufficient; collection + forwarding patterns provide more specific mule-risk evidence.
+6. **Class imbalance matters.** At a 1% prevalence, estimated precision falls to approximately **37%**.
 
 ---
 
 ## Detection vs Workload
 
-![Detection vs Workload](outputs/figures/fig09_detection_workload_tradeoff.png)
+The project evaluates detection performance together with the **investigator workload required to achieve it**.
 
-The project explicitly evaluates the trade-off between **detection performance and investigator workload**, rather than optimising only for model accuracy.
+<p align="center">
+  <img src="outputs/figures/fig09_detection_workload_tradeoff.png" width="48%" alt="Detection vs workload trade-off"/>
+  <img src="outputs/figures/fig10_topk_capture.png" width="48%" alt="Top-k capture curves"/>
+</p>
+
+---
+
+## Explainability & Network Analysis
+
+The risk score provides interpretable evidence for each alert, including:
+
+* Triggered signals
+* Behaviour relative to the account's own baseline
+* Transaction patterns
+* Counterparty relationships
+* Network structure
+* Potential collection and forwarding behaviour
+
+<p align="center">
+  <img src="outputs/figures/fig16_why_not_ml.png" width="48%" alt="Why not just use ML"/>
+  <img src="outputs/figures/fig19_case2_network.png" width="40%" alt="Potential mule candidate network"/>
+</p>
+
+The analysis shows why **explainability and robustness matter alongside predictive performance**.
 
 ---
 
 ## Dashboard
 
-An **8-page Streamlit investigation dashboard** covers:
+The project includes an **8-page Streamlit investigation application**:
 
-**Overview → Alert Queue → Account Investigation → AML Monitoring → Mule/Network Analysis → Activity Analytics → Model Performance → Data & Limitations**
+**Executive Overview → Alert Queue → Account Investigation → AML Monitoring → Mule & Network Analysis → Labelled Activity Analytics → Rule & Model Performance → Data & Limitations**
 
-Account investigation includes **why flagged, behavioural baseline, transactions, and 2-hop network context**.
+The account investigation workflow includes:
+
+* Why the account was flagged
+* Behaviour relative to its own baseline
+* Transaction history
+* 2-hop network context
+* Risk evidence
+
+> **Dashboard status:** Streamlit could not be installed in the original build environment, so the real UI has not been launched or visually validated. All dashboard pages were executed against a Streamlit API stub using `python tests/smoke_test_dashboard.py`.
 
 ---
 
-## Repository
+## How to Run
+
+```bash
+git clone <your-repo-url> aml-intelligence-engine
+cd aml-intelligence-engine
+
+python -m venv .venv
+source .venv/bin/activate       # Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python run_pipeline.py
+python tools/execute_notebooks.py
+python tests/run_tests.py
+
+streamlit run dashboard/app.py
+```
+
+The main pipeline performs the **data audit, feature engineering, scoring, evaluation, SQL analysis, figure generation, and report generation**.
+
+---
+
+## Repository Structure
 
 ```text
 aml-intelligence-engine/
+│
 ├── data/
+│   ├── raw/amlsim_sample/
+│   └── processed/
 ├── src/
 ├── sql/
+│   └── analytical_queries.sql
 ├── notebooks/
 ├── dashboard/
 ├── outputs/
+│   ├── tables/
+│   ├── figures/
+│   └── models/
 ├── reports/
 ├── tests/
 ├── tools/
@@ -135,20 +160,20 @@ aml-intelligence-engine/
 
 ---
 
-## Limitations
+## Technology
 
-* Synthetic data with generator-specific artefacts
-* Account-level AML typology labels
-* Unrealistic ~9% prevalence
-* No KYC, payment-type, loss, or real-world customer data
-* Suspicious activity does not imply criminal activity
-* Not a production or RBI-compliant AML system
+**Python 3.11 · Pandas · NumPy · SciPy · Scikit-learn · NetworkX · Matplotlib · SQLite · Streamlit**
+
+Explanations are derived directly from the **linear contributions of the monotone risk score**; no SHAP or deep learning is used.
 
 ---
 
-## Conclusion
+## Limitations & Disclaimer
 
-The project demonstrates an **explainable AML intelligence workflow** that combines transaction behaviour, rules, risk scoring, and network analysis to improve alert prioritisation while making the detection–workload trade-off explicit.
-
-The main finding is that **more complex modelling does not automatically produce better transferable AML detection**—the most useful signals must also be interpretable, robust, and operationally practical.
-
+* The data are synthetic and contain generator-specific artefacts.
+* AML typology labels are account/activity-level labels.
+* The simulated prevalence is substantially higher than many real-world AML settings.
+* The dataset contains no KYC information, payment types, timestamps, or financial-loss labels.
+* Suspicious activity does not establish fraud or criminal behaviour.
+* A mule-risk candidate is not a confirmed mule account.
+* This is an educational analytics project, **not a production or RBI-compliant AML system**.
