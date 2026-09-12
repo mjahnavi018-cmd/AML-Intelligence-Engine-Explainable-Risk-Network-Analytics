@@ -2,8 +2,6 @@
 
 **An Explainable Transaction Intelligence Framework for Banking Risk, Financial Crime Monitoring, and Alert Prioritization**
 
-![Python](https://img.shields.io/badge/Python-3.11-2a78d6) ![SQL](https://img.shields.io/badge/SQL-SQLite-2a78d6) ![Data](https://img.shields.io/badge/data-synthetic%20(IBM%20AMLSim)-eb6834) ![Status](https://img.shields.io/badge/dashboard-not%20launched%20in%20build%20env-898781)
-
 > I built an explainable transaction-monitoring analytics framework that combines behavioural, transactional and
 > network signals to prioritise potential AML-typology and mule-account activity for investigation - and measured,
 > on held-out accounts and later weeks, where that complexity helps and where it does not.
