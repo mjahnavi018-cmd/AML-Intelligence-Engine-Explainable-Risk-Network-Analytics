@@ -1,0 +1,17 @@
+level_0,level_1,0,1
+in_degree,count,18176.0,1804.0
+in_degree,mean,5.296930017605634,11.667960088691796
+in_degree,std,5.123146324654701,16.64086924321525
+in_degree,min,0.0,0.0
+in_degree,25%,3.0,5.0
+in_degree,50%,4.0,7.0
+in_degree,75%,6.0,11.0
+in_degree,max,122.0,172.0
+out_degree,count,18176.0,1804.0
+out_degree,mean,5.562555017605634,8.991685144124169
+out_degree,std,3.580958928421502,15.476582694894354
+out_degree,min,0.0,1.0
+out_degree,25%,4.0,5.0
+out_degree,50%,5.0,6.0
+out_degree,75%,7.0,9.0
+out_degree,max,101.0,203.0

@@ -1,0 +1,13 @@
+metric,value
+nodes (accounts with >=1 non-self transfer),19980
+edges (distinct directed account pairs),117326
+density,0.0002939172216913846
+weakly connected components,1
+largest weakly connected component (nodes),19980
+largest strongly connected component (nodes),19802
+reciprocity (share of edges with reverse edge),0.00519918858565024
+in-degree mean / max,5.87 / 172
+out-degree mean / max,5.87 / 203
+labelled accounts in graph,1804
+edges among labelled accounts only,4659
+largest weakly connected component of labelled-only subgraph,1799

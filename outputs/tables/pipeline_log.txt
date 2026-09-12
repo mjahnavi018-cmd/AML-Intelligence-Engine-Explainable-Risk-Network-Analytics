@@ -1,0 +1,16 @@
+[19:34:07] raw checksums verified
+[19:34:07] data audit passed for 3 datasets (34 warnings)
+[19:34:16] point-in-time features: 140,450 account-weeks
+[19:34:17] EDA and profiling tables written
+[19:34:21] model selection (dev validation): best transferable = M2 Integrated non-negative logistic
+[19:34:22] alert queue: 1,324 alerts (540 in test weeks)
+[19:34:22] sensitivity, segment, prevalence and drift analyses written
+[19:34:55] network analytics written; 85 potential mule-account candidates (held-out)
+[19:35:03] hypothesis tests written
+[19:35:06] SQLite database written: data/processed/banking_risk.db
+[19:35:07] robustness: feature-family removal done
+[19:35:11] robustness: weight perturbation done
+[19:35:20] robustness: artifact-neutralised scenario done
+[19:35:38] robustness: alternative datasets done
+[19:35:39] robustness: early vs late test windows done
+[19:35:42] leakage audit: 10/10 checks passed

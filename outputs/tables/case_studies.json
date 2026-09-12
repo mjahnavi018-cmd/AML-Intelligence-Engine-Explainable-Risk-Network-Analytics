@@ -1,0 +1,501 @@
+[
+  {
+    "case": "Case 1 - highest-priority labelled account",
+    "category": "strong detection",
+    "selection_rule": "labelled held-out account with the highest weekly risk score in the test weeks",
+    "account_id": 9998,
+    "label_is_suspicious": 1,
+    "initial_balance": 323.79,
+    "full_period": {
+      "transactions": 373,
+      "total_value": 116155.4,
+      "in_count": 172,
+      "out_count": 201,
+      "unique_counterparties": 372,
+      "median_amount": 323.79
+    },
+    "baseline_before_test": {
+      "transactions": 176,
+      "weeks_observed": 9,
+      "median_amount": 323.79
+    },
+    "test_period": {
+      "transactions": 198,
+      "value": 60140.21,
+      "senders": 117,
+      "receivers": 82,
+      "active_weeks": 9
+    },
+    "network_full_period": {
+      "in_degree": 172.0,
+      "out_degree": 201.0,
+      "pagerank": 0.001043,
+      "betweenness": 0.039879
+    },
+    "max_risk_score": 100.0,
+    "peak_week": 14,
+    "priority": "CRITICAL",
+    "weeks_alerted": 7,
+    "signals_fired_peak_week": [
+      "VEL-01 High absolute velocity",
+      "BEH-02 New-counterparty burst",
+      "AML-01 Rapid pass-through",
+      "AML-03 Circular flow",
+      "NET-01 Fan-in collector",
+      "NET-02 Fan-out distributor",
+      "NET-03 Flow centrality (PageRank)"
+    ],
+    "signals_fired_any_test_week": [
+      "AML-01 Rapid pass-through",
+      "AML-03 Circular flow",
+      "BEH-02 New-counterparty burst",
+      "NET-01 Fan-in collector",
+      "NET-02 Fan-out distributor",
+      "NET-03 Flow centrality (PageRank)",
+      "TXN-01 Large transaction",
+      "VEL-01 High absolute velocity"
+    ],
+    "top_contributions_peak_week": [
+      {
+        "feature": "weekly transaction count",
+        "value": 36.0,
+        "contribution": 6.042
+      },
+      {
+        "feature": "circular-flow participation",
+        "value": 4.0,
+        "contribution": 0.808
+      },
+      {
+        "feature": "distinct receivers (28d)",
+        "value": 55.0,
+        "contribution": 0.091
+      },
+      {
+        "feature": "velocity vs own history",
+        "value": 1.7788,
+        "contribution": 0.073
+      }
+    ],
+    "weekly_scores": {
+      "13": 99.98,
+      "14": 100.0,
+      "15": 100.0,
+      "16": 100.0,
+      "17": 99.96,
+      "18": 99.98,
+      "19": 98.5,
+      "20": 99.61,
+      "21": 87.5
+    },
+    "b2_amount_velocity_alert_weeks": 8,
+    "interpretation": "Account is labelled as a typology participant. Peak week 14 scored 100.0 (priority 'CRITICAL'), alerted in 7 of 9 active test weeks. Signals fired: Rapid pass-through, Circular flow, New-counterparty burst, Fan-in collector, Fan-out distributor, Flow centrality (PageRank), Large transaction, High absolute velocity. Largest contribution: weekly transaction count. Test-week flows: 117 distinct senders, 82 distinct receivers, 198 transfers. The evidence describes a pattern worth review; it is not proof of laundering or mule activity.",
+    "ego_edges_test_period": 197
+  },
+  {
+    "case": "Case 2 - potential mule-account candidate",
+    "category": "mule",
+    "selection_rule": "labelled, non-hub (below top-1% degree) potential mule candidate; collector-forwarder pattern preferred, then most distinct mule signals, then highest score",
+    "account_id": 19743,
+    "label_is_suspicious": 1,
+    "initial_balance": 314.42,
+    "full_period": {
+      "transactions": 38,
+      "total_value": 10638.36,
+      "in_count": 19,
+      "out_count": 19,
+      "unique_counterparties": 34,
+      "median_amount": 314.42
+    },
+    "baseline_before_test": {
+      "transactions": 12,
+      "weeks_observed": 3,
+      "median_amount": 314.42
+    },
+    "test_period": {
+      "transactions": 26,
+      "value": 6493.7,
+      "senders": 16,
+      "receivers": 8,
+      "active_weeks": 9
+    },
+    "network_full_period": {
+      "in_degree": 18.0,
+      "out_degree": 18.0,
+      "pagerank": 9.9e-05,
+      "betweenness": 0.001391
+    },
+    "max_risk_score": 99.41,
+    "peak_week": 17,
+    "priority": "MEDIUM",
+    "weeks_alerted": 1,
+    "signals_fired_peak_week": [
+      "VEL-01 High absolute velocity",
+      "BEH-02 New-counterparty burst",
+      "NET-02 Fan-out distributor"
+    ],
+    "signals_fired_any_test_week": [
+      "AML-01 Rapid pass-through",
+      "BEH-02 New-counterparty burst",
+      "NET-02 Fan-out distributor",
+      "NET-03 Flow centrality (PageRank)",
+      "VEL-01 High absolute velocity"
+    ],
+    "top_contributions_peak_week": [
+      {
+        "feature": "weekly transaction count",
+        "value": 8.0,
+        "contribution": 2.894
+      },
+      {
+        "feature": "velocity vs own history",
+        "value": 2.3226,
+        "contribution": 0.167
+      },
+      {
+        "feature": "distinct receivers (28d)",
+        "value": 7.0,
+        "contribution": 0.034
+      },
+      {
+        "feature": "largest transfer",
+        "value": 379.42,
+        "contribution": 0.0
+      }
+    ],
+    "weekly_scores": {
+      "13": 88.06,
+      "14": 95.35,
+      "15": 64.51,
+      "16": 64.46,
+      "17": 99.41,
+      "18": 87.8,
+      "19": 0.45,
+      "20": 64.18,
+      "21": 0.14
+    },
+    "b2_amount_velocity_alert_weeks": 1,
+    "interpretation": "Account is labelled as a typology participant. Peak week 17 scored 99.41 (priority 'MEDIUM'), alerted in 1 of 9 active test weeks. Signals fired: Rapid pass-through, New-counterparty burst, Fan-out distributor, Flow centrality (PageRank), High absolute velocity. Largest contribution: weekly transaction count. Test-week flows: 16 distinct senders, 8 distinct receivers, 26 transfers. The evidence describes a pattern worth review; it is not proof of laundering or mule activity.",
+    "ego_edges_test_period": 24
+  },
+  {
+    "case": "Case 3 - circular flow",
+    "category": "AML pattern",
+    "selection_rule": "labelled non-hub account on >= 1 time-respecting cycle in a test week, highest score",
+    "account_id": 11887,
+    "label_is_suspicious": 1,
+    "initial_balance": 294.85,
+    "full_period": {
+      "transactions": 15,
+      "total_value": 1947.68,
+      "in_count": 6,
+      "out_count": 9,
+      "unique_counterparties": 8,
+      "median_amount": 16.43
+    },
+    "baseline_before_test": {
+      "transactions": 2,
+      "weeks_observed": 2,
+      "median_amount": 294.85
+    },
+    "test_period": {
+      "transactions": 13,
+      "value": 1357.98,
+      "senders": 3,
+      "receivers": 4,
+      "active_weeks": 6
+    },
+    "network_full_period": {
+      "in_degree": 3.0,
+      "out_degree": 6.0,
+      "pagerank": 1.8e-05,
+      "betweenness": 1.1e-05
+    },
+    "max_risk_score": 99.68,
+    "peak_week": 18,
+    "priority": "MEDIUM",
+    "weeks_alerted": 1,
+    "signals_fired_peak_week": [
+      "VEL-01 High absolute velocity",
+      "BEH-01 Velocity spike vs own baseline",
+      "AML-03 Circular flow"
+    ],
+    "signals_fired_any_test_week": [
+      "AML-03 Circular flow",
+      "BEH-01 Velocity spike vs own baseline",
+      "NET-03 Flow centrality (PageRank)",
+      "VEL-01 High absolute velocity"
+    ],
+    "top_contributions_peak_week": [
+      {
+        "feature": "weekly transaction count",
+        "value": 8.0,
+        "contribution": 2.894
+      },
+      {
+        "feature": "velocity vs own history",
+        "value": 6.5,
+        "contribution": 0.595
+      },
+      {
+        "feature": "circular-flow participation",
+        "value": 1.0,
+        "contribution": 0.347
+      },
+      {
+        "feature": "distinct receivers (28d)",
+        "value": 3.0,
+        "contribution": 0.014
+      }
+    ],
+    "weekly_scores": {
+      "14": 53.78,
+      "15": 52.02,
+      "16": 51.71,
+      "18": 99.68,
+      "19": 63.85,
+      "20": 63.85
+    },
+    "b2_amount_velocity_alert_weeks": 1,
+    "interpretation": "Account is labelled as a typology participant. Peak week 18 scored 99.68 (priority 'MEDIUM'), alerted in 1 of 6 active test weeks. Signals fired: Circular flow, Velocity spike vs own baseline, Flow centrality (PageRank), High absolute velocity. Largest contribution: weekly transaction count. Test-week flows: 3 distinct senders, 4 distinct receivers, 13 transfers. The evidence describes a pattern worth review; it is not proof of laundering or mule activity.",
+    "ego_edges_test_period": 7
+  },
+  {
+    "case": "Case 4 - unusual but not labelled",
+    "category": "legitimate unusual / false positive",
+    "selection_rule": "unlabelled account with the highest weekly transaction count in the test weeks",
+    "account_id": 19994,
+    "label_is_suspicious": 0,
+    "initial_balance": 284.18,
+    "full_period": {
+      "transactions": 216,
+      "total_value": 62537.77,
+      "in_count": 116,
+      "out_count": 100,
+      "unique_counterparties": 214,
+      "median_amount": 284.17
+    },
+    "baseline_before_test": {
+      "transactions": 97,
+      "weeks_observed": 11,
+      "median_amount": 284.17
+    },
+    "test_period": {
+      "transactions": 117,
+      "value": 36299.28,
+      "senders": 54,
+      "receivers": 63,
+      "active_weeks": 9
+    },
+    "network_full_period": {
+      "in_degree": 116.0,
+      "out_degree": 100.0,
+      "pagerank": 0.00069,
+      "betweenness": 0.023849
+    },
+    "max_risk_score": 99.86,
+    "peak_week": 15,
+    "priority": "HIGH",
+    "weeks_alerted": 8,
+    "signals_fired_peak_week": [
+      "VEL-01 High absolute velocity",
+      "BEH-02 New-counterparty burst",
+      "NET-01 Fan-in collector",
+      "NET-02 Fan-out distributor",
+      "NET-03 Flow centrality (PageRank)"
+    ],
+    "signals_fired_any_test_week": [
+      "AML-01 Rapid pass-through",
+      "AML-03 Circular flow",
+      "BEH-02 New-counterparty burst",
+      "NET-01 Fan-in collector",
+      "NET-02 Fan-out distributor",
+      "NET-03 Flow centrality (PageRank)",
+      "TXN-01 Large transaction",
+      "VEL-01 High absolute velocity"
+    ],
+    "top_contributions_peak_week": [
+      {
+        "feature": "weekly transaction count",
+        "value": 19.0,
+        "contribution": 4.672
+      },
+      {
+        "feature": "velocity vs own history",
+        "value": 1.8571,
+        "contribution": 0.088
+      },
+      {
+        "feature": "distinct receivers (28d)",
+        "value": 28.0,
+        "contribution": 0.072
+      },
+      {
+        "feature": "largest transfer",
+        "value": 462.25,
+        "contribution": 0.0
+      }
+    ],
+    "weekly_scores": {
+      "13": 99.71,
+      "14": 99.82,
+      "15": 99.86,
+      "16": 99.77,
+      "17": 99.7,
+      "18": 99.82,
+      "19": 99.52,
+      "20": 99.13,
+      "21": 98.67
+    },
+    "b2_amount_velocity_alert_weeks": 9,
+    "interpretation": "This account is NOT labelled yet is among the busiest in the test weeks (117 transfers with 54 senders and 63 receivers). The amount+velocity baseline alerted it in 9 week(s); the integrated framework gave priority 'HIGH' (max score 99.86). High activity alone is weak evidence: in a real bank this profile could be a business or collection account, and an analyst would close it after checking account purpose - a field this dataset does not have.",
+    "ego_edges_test_period": 117
+  },
+  {
+    "case": "Case 5 - borderline alert",
+    "category": "borderline",
+    "selection_rule": "account whose best weekly score is the lowest score that still produced an alert",
+    "account_id": 13255,
+    "label_is_suspicious": 1,
+    "initial_balance": 150.59,
+    "full_period": {
+      "transactions": 21,
+      "total_value": 2914.22,
+      "in_count": 10,
+      "out_count": 11,
+      "unique_counterparties": 12,
+      "median_amount": 150.58
+    },
+    "baseline_before_test": {
+      "transactions": 8,
+      "weeks_observed": 5,
+      "median_amount": 212.33
+    },
+    "test_period": {
+      "transactions": 13,
+      "value": 633.94,
+      "senders": 1,
+      "receivers": 4,
+      "active_weeks": 3
+    },
+    "network_full_period": {
+      "in_degree": 6.0,
+      "out_degree": 7.0,
+      "pagerank": 6.7e-05,
+      "betweenness": 0.000154
+    },
+    "max_risk_score": 99.0,
+    "peak_week": 16,
+    "priority": "LOW",
+    "weeks_alerted": 1,
+    "signals_fired_peak_week": [
+      "VEL-01 High absolute velocity",
+      "BEH-01 Velocity spike vs own baseline"
+    ],
+    "signals_fired_any_test_week": [
+      "BEH-01 Velocity spike vs own baseline",
+      "VEL-01 High absolute velocity"
+    ],
+    "top_contributions_peak_week": [
+      {
+        "feature": "weekly transaction count",
+        "value": 6.0,
+        "contribution": 2.334
+      },
+      {
+        "feature": "velocity vs own history",
+        "value": 3.8889,
+        "contribution": 0.37
+      },
+      {
+        "feature": "largest transfer",
+        "value": 150.58,
+        "contribution": -0.0
+      },
+      {
+        "feature": "new counterparties this week",
+        "value": 1.0,
+        "contribution": -0.0
+      }
+    ],
+    "weekly_scores": {
+      "16": 99.0,
+      "17": 98.87,
+      "18": 7.08
+    },
+    "b2_amount_velocity_alert_weeks": 2,
+    "interpretation": "Account is labelled as a typology participant. Peak week 16 scored 99.0 (priority 'LOW'), alerted in 1 of 3 active test weeks. Signals fired: Velocity spike vs own baseline, High absolute velocity. Largest contribution: weekly transaction count. Test-week flows: 1 distinct senders, 4 distinct receivers, 13 transfers. The evidence describes a pattern worth review; it is not proof of laundering or mule activity.",
+    "ego_edges_test_period": 5
+  },
+  {
+    "case": "Case 6 - missed labelled account",
+    "category": "false negative",
+    "selection_rule": "labelled account active >= 4 test weeks with the lowest risk score",
+    "account_id": 9904,
+    "label_is_suspicious": 1,
+    "initial_balance": 353.33,
+    "full_period": {
+      "transactions": 42,
+      "total_value": 12609.28,
+      "in_count": 39,
+      "out_count": 3,
+      "unique_counterparties": 42,
+      "median_amount": 267.28
+    },
+    "baseline_before_test": {
+      "transactions": 38,
+      "weeks_observed": 9,
+      "median_amount": 267.28
+    },
+    "test_period": {
+      "transactions": 4,
+      "value": 1080.35,
+      "senders": 4,
+      "receivers": 0,
+      "active_weeks": 4
+    },
+    "network_full_period": {
+      "in_degree": 39.0,
+      "out_degree": 3.0,
+      "pagerank": 0.000215,
+      "betweenness": 0.000341
+    },
+    "max_risk_score": 0.58,
+    "peak_week": 20,
+    "priority": "no alert",
+    "weeks_alerted": 0,
+    "signals_fired_peak_week": [],
+    "signals_fired_any_test_week": [],
+    "top_contributions_peak_week": [
+      {
+        "feature": "largest transfer",
+        "value": 340.63,
+        "contribution": 0.0
+      },
+      {
+        "feature": "rapid pass-through of funds",
+        "value": 0.0,
+        "contribution": -0.0
+      },
+      {
+        "feature": "new counterparties this week",
+        "value": 1.0,
+        "contribution": -0.0
+      },
+      {
+        "feature": "flow centrality (28d PageRank)",
+        "value": 0.0,
+        "contribution": -0.0
+      }
+    ],
+    "weekly_scores": {
+      "13": 0.07,
+      "15": 0.2,
+      "17": 0.27,
+      "20": 0.58
+    },
+    "b2_amount_velocity_alert_weeks": 0,
+    "interpretation": "This account is labelled as a typology participant but its best weekly score was only 0.58 (signals: no framework signal). Its weekly behaviour is indistinguishable from background accounts with the available fields - typology members that transact rarely leave little evidence. This illustrates the recall ceiling of behaviour-only monitoring.",
+    "ego_edges_test_period": 4
+  }
+]

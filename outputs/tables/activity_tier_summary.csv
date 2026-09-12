@@ -1,0 +1,6 @@
+activity_tier,accounts,labelled_rate,median_tx,median_counterparties
+high (p90-p99),1775,0.3369014084507042,25.0,24.0
+inactive,20,0.0,0.0,
+low (<= median),11102,0.02296883444424428,7.0,7.0
+medium (median-p90),6918,0.12069962416883492,13.0,13.0
+very high (> p99),185,0.6270270270270271,55.0,53.0

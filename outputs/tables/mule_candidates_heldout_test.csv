@@ -1,0 +1,86 @@
+account_id,NET-01,NET-02,AML-01,AML-03,BEH-02,distinct_mule_signals,mule_signal_weeks,pattern,is_suspicious
+3955,False,False,True,True,False,2,3,circular-flow member,1
+8474,False,True,True,False,False,2,2,pass-through,0
+9182,False,True,False,True,False,2,2,circular-flow member,0
+9311,False,True,False,False,True,2,2,other combination,1
+9321,False,True,True,False,False,2,2,pass-through,0
+9358,False,True,True,False,False,2,3,pass-through,0
+9382,False,False,True,False,True,2,2,pass-through,1
+9468,False,True,False,False,True,2,2,other combination,0
+9515,False,True,False,False,True,2,3,other combination,0
+9526,False,True,False,False,True,2,3,other combination,0
+9567,False,True,False,False,True,2,4,other combination,0
+9609,False,True,False,False,True,2,5,other combination,0
+9686,False,True,False,False,True,2,5,other combination,1
+9771,False,True,False,False,True,2,5,other combination,0
+9804,False,True,True,False,False,2,4,pass-through,0
+9836,False,True,False,False,True,2,4,other combination,0
+9852,True,False,False,False,True,2,3,collector,0
+9903,True,False,False,False,True,2,5,collector,0
+9910,True,False,False,False,True,2,3,collector,1
+9918,True,False,False,False,True,2,5,collector,0
+9919,True,False,False,False,True,2,4,collector,1
+9948,True,False,False,False,True,2,5,collector,0
+9949,True,False,False,False,True,2,5,collector,0
+9961,True,False,False,False,True,2,5,collector,0
+9962,True,False,False,False,True,2,8,collector,1
+9964,True,False,False,False,True,2,9,collector,0
+9966,True,False,False,False,True,2,8,collector,1
+9974,True,False,False,False,True,2,4,collector,0
+9977,True,False,False,False,True,2,7,collector,1
+9983,True,True,True,False,True,4,26,collector-forwarder,1
+9985,True,True,False,False,True,3,12,collector-forwarder,1
+9988,True,True,True,True,True,5,22,collector-forwarder,1
+9989,True,True,True,False,True,4,17,collector-forwarder,1
+9992,True,True,True,True,True,5,26,collector-forwarder,1
+9994,True,True,True,False,True,4,27,collector-forwarder,1
+9996,True,True,True,True,True,5,30,collector-forwarder,1
+9998,True,True,True,True,True,5,38,collector-forwarder,1
+9999,True,True,True,True,True,5,34,collector-forwarder,1
+15191,False,False,True,True,False,2,3,circular-flow member,0
+18797,False,True,True,False,False,2,2,pass-through,1
+18958,False,True,True,False,False,2,2,pass-through,0
+19011,False,True,True,False,False,2,3,pass-through,0
+19098,False,True,True,False,False,2,2,pass-through,0
+19295,False,True,False,False,True,2,2,other combination,1
+19347,False,True,True,False,True,3,6,pass-through,0
+19365,False,True,False,False,True,2,5,other combination,0
+19416,False,True,False,False,True,2,3,other combination,0
+19525,False,True,True,False,True,3,3,pass-through,1
+19549,False,True,False,False,True,2,2,other combination,0
+19629,False,True,False,True,False,2,2,circular-flow member,0
+19646,False,True,True,False,True,3,4,pass-through,0
+19656,False,True,False,False,True,2,4,other combination,1
+19679,False,True,False,False,True,2,6,other combination,1
+19743,False,True,True,False,True,3,6,pass-through,1
+19756,False,True,True,False,False,2,6,pass-through,0
+19764,False,True,False,False,True,2,4,other combination,0
+19773,False,True,False,False,True,2,5,other combination,1
+19775,False,True,True,False,True,3,5,pass-through,1
+19781,False,True,True,False,False,2,4,pass-through,1
+19789,False,True,True,False,False,2,5,pass-through,0
+19797,False,True,False,False,True,2,10,other combination,1
+19804,True,False,False,False,True,2,4,collector,0
+19860,False,True,False,True,False,2,3,circular-flow member,1
+19863,True,False,False,False,True,2,3,collector,1
+19880,True,False,False,False,True,2,3,collector,0
+19887,True,False,False,False,True,2,3,collector,0
+19899,True,False,False,False,True,2,2,collector,0
+19900,True,False,False,False,True,2,3,collector,1
+19902,True,False,False,False,True,2,4,collector,1
+19903,True,False,False,False,True,2,2,collector,1
+19934,True,False,False,False,True,2,5,collector,1
+19935,True,False,False,False,True,2,3,collector,0
+19945,True,False,False,False,True,2,5,collector,0
+19949,True,False,False,False,True,2,5,collector,1
+19950,True,False,False,False,True,2,7,collector,1
+19962,True,False,False,False,True,2,9,collector,0
+19965,True,False,False,False,True,2,8,collector,0
+19967,True,False,False,False,True,2,10,collector,1
+19973,True,False,False,False,True,2,5,collector,0
+19975,True,False,False,False,True,2,6,collector,1
+19976,True,False,False,False,True,2,7,collector,1
+19978,True,False,False,False,True,2,10,collector,1
+19984,True,True,False,False,True,3,20,collector-forwarder,1
+19990,True,True,True,False,True,4,27,collector-forwarder,1
+19994,True,True,True,True,True,5,31,collector-forwarder,0

@@ -1,0 +1,6 @@
+metric,value
+sender-receiver-week groups with >=2 transfers,866.0
+share with near-identical amounts (CV < 5%),0.7263279445727483
+share between two labelled accounts,1.0
+median transfers per group,5.0
+median amount per transfer,10.23

@@ -1,0 +1,4 @@
+dataset,typologies,alerts,alert_precision,account_recall,pr_auc,roc_auc,precision_top5pct,base_rate,b2_alert_precision,weights
+combined (primary),200 fan-in + 200 cycle,215,0.8651162790697674,0.1406799531066823,0.45728234309761345,0.7533888966821752,0.6875,0.09194782796162553,0.40644361833952913,
+fanin,200 fan-in,177,0.480225988700565,0.15212527964205816,0.2976259263481208,0.7367262051646066,0.37365010799136067,0.04827735176584944,0.19595645412130638,"{'max_amt': 0.0, 'n_tx': 0.681, 'velocity_ratio': 0.113, 'new_cp': 0.0, 'rapid_movement': 0.0, 'cycle_count': 0.0, 'fan_in_28': 0.0, 'fan_out_28': 0.0, 'pagerank_28': 0.0}"
+cycle,200 cycle,221,0.6289592760180995,0.2017738359201774,0.3348507373824386,0.7653961294699221,0.39439655172413796,0.04862009486847779,0.2735562310030395,"{'max_amt': 0.0, 'n_tx': 0.713, 'velocity_ratio': 0.116, 'new_cp': 0.0, 'rapid_movement': 0.0, 'cycle_count': 0.0, 'fan_in_28': 0.0, 'fan_out_28': 0.0, 'pagerank_28': 0.0}"

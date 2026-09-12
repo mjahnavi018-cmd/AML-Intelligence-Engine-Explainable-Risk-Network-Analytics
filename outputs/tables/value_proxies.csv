@@ -1,0 +1,7 @@
+measure,value,share_of_total
+total transfer value,33287919.2,1.0
+value between two labelled accounts (typology proxy),1252119.24,0.037614824539708686
+value touching >= 1 labelled account,9289994.45,0.27908005887012605
+transfers between two labelled accounts,7885.0,0.06540420378572968
+"mean amount, typology-proxy transfers",158.7976207989854,
+"mean amount, other transfers",284.32543697247786,

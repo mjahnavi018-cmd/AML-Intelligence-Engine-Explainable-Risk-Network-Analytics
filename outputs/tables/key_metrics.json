@@ -1,0 +1,726 @@
+{
+  "n_accounts": 20000,
+  "n_tx": 120558,
+  "n_labelled": 1804,
+  "labelled_share": 0.0902,
+  "total_value": 33287919.2,
+  "n_steps": 149,
+  "n_weeks_full": 21,
+  "amount_min": 2.51,
+  "amount_max": 599.91,
+  "n_dup_extra": 1684,
+  "n_self": 15,
+  "n_inactive_accounts": 20,
+  "metadata_labelled": 1803,
+  "n_proxy_typology_tx": 7885,
+  "gini_tx_count": 0.33126175502298544,
+  "gini_value": 0.36263830800428504,
+  "top1pct_value_share": 0.07422732498866515,
+  "top10pct_value_share": 0.2834969964292967,
+  "dev_account_weeks": 78365,
+  "test_account_weeks": 62085,
+  "heldout_test_account_weeks": 30704,
+  "heldout_test_accounts": 9277,
+  "heldout_test_labelled": 853,
+  "heldout_test_base_rate": 0.09194782796162553,
+  "thresholds": {
+    "TXN-01": 589.65,
+    "VEL-01": 6.0,
+    "BEH-01": 3.2727272727272725,
+    "BEH-02": 6.0,
+    "BEH-03": 2.362049045389842,
+    "BEH-04": 1.0,
+    "AML-01": 0.8,
+    "AML-02": 2.0,
+    "AML-03": 1.0,
+    "NET-01": 14.0,
+    "NET-02": 7.0,
+    "NET-03": 0.00041806603997584146
+  },
+  "model_weights": {
+    "max_amt": 0.0,
+    "n_tx": 0.7158073055487337,
+    "velocity_ratio": 0.12298963701702298,
+    "new_cp": 0.0,
+    "rapid_movement": 0.0,
+    "cycle_count": 0.03202862702140749,
+    "fan_in_28": 0.0,
+    "fan_out_28": 0.01583381600193592,
+    "pagerank_28": 0.0
+  },
+  "quarantined": [
+    "BEH-03",
+    "AML-02"
+  ],
+  "base_rate_dev_weeks": 0.11403049830919415,
+  "base_rate_test_weeks": 0.12063574778530485,
+  "artifact_lt100_share": 1.0,
+  "artifact_dup_share": 1.0,
+  "recurring_cp_rate_labelled": 0.03771262309758281,
+  "recurring_cp_rate_unlabelled": 0.000331273675265379,
+  "lr_coefs": {
+    "max_amt": 0.01885614962501795,
+    "n_tx": 4.002058955294296,
+    "velocity_ratio": -0.03608861972845147,
+    "new_cp": -3.6452033895038687,
+    "rapid_movement": -0.04161489259725947,
+    "cycle_count": 0.04225110254769459,
+    "fan_in_28": 0.2891269329327796,
+    "fan_out_28": 0.34962773021459953,
+    "pagerank_28": -0.07578509827369675
+  },
+  "selected_method": "M2 Integrated non-negative logistic",
+  "selection_val_pr_auc": {
+    "M0 Velocity only (weekly count)": 0.3478532923297905,
+    "M1 Evidence count (families fired)": 0.3158467937712808,
+    "M2 Integrated non-negative logistic": 0.36732818890024943,
+    "ML1 Logistic regression (unconstrained)": 0.5208234200273008,
+    "ML2 Gradient boosting": 0.49519390788633066,
+    "ML3 Isolation Forest (unsupervised)": 0.2852856412493072
+  },
+  "baseline": {
+    "B1 Amount threshold": {
+      "alerts": 488,
+      "alerts_per_week": 54.22222222222222,
+      "alerts_per_1000_tx": 13.714414186549757,
+      "alerted_accounts": 351,
+      "alert_precision": 0.11475409836065574,
+      "account_precision": 0.13105413105413105,
+      "account_recall": 0.053927315357561546,
+      "f1": 0.07641196013289037,
+      "false_positive_accounts": 305,
+      "fpr_accounts": 0.03620607787274454,
+      "tp": 46,
+      "fp": 305,
+      "fn": 807,
+      "tn": 8119
+    },
+    "B2 Amount + velocity": {
+      "alerts": 807,
+      "alerts_per_week": 89.66666666666667,
+      "alerts_per_1000_tx": 22.67936936177388,
+      "alerted_accounts": 544,
+      "alert_precision": 0.40644361833952913,
+      "account_precision": 0.38235294117647056,
+      "account_recall": 0.24384525205158264,
+      "f1": 0.297780959198282,
+      "false_positive_accounts": 336,
+      "fpr_accounts": 0.039886039886039885,
+      "tp": 208,
+      "fp": 336,
+      "fn": 645,
+      "tn": 8088
+    },
+    "B3 Behavioural anomaly": {
+      "alerts": 367,
+      "alerts_per_week": 40.77777777777778,
+      "alerts_per_1000_tx": 10.31391394767164,
+      "alerted_accounts": 274,
+      "alert_precision": 0.6648501362397821,
+      "account_precision": 0.6021897810218978,
+      "account_recall": 0.19343493552168817,
+      "f1": 0.292812777284827,
+      "false_positive_accounts": 109,
+      "fpr_accounts": 0.012939221272554606,
+      "tp": 165,
+      "fp": 109,
+      "fn": 688,
+      "tn": 8315
+    },
+    "B4 Network / AML patterns": {
+      "alerts": 973,
+      "alerts_per_week": 108.11111111111111,
+      "alerts_per_1000_tx": 27.344518449821543,
+      "alerted_accounts": 508,
+      "alert_precision": 0.3720452209660843,
+      "account_precision": 0.2440944881889764,
+      "account_recall": 0.14536928487690504,
+      "f1": 0.18221895664952242,
+      "false_positive_accounts": 384,
+      "fpr_accounts": 0.045584045584045586,
+      "tp": 124,
+      "fp": 384,
+      "fn": 729,
+      "tn": 8040
+    },
+    "B5a Integrated rules (>=2 families)": {
+      "alerts": 316,
+      "alerts_per_week": 35.111111111111114,
+      "alerts_per_1000_tx": 8.880645251946154,
+      "alerted_accounts": 202,
+      "alert_precision": 0.75,
+      "account_precision": 0.7079207920792079,
+      "account_recall": 0.16764361078546308,
+      "f1": 0.27109004739336495,
+      "false_positive_accounts": 59,
+      "fpr_accounts": 0.007003798670465337,
+      "tp": 143,
+      "fp": 59,
+      "fn": 710,
+      "tn": 8365
+    },
+    "B5b Integrated risk score (top 1%)": {
+      "alerts": 215,
+      "alerts_per_week": 23.88888888888889,
+      "alerts_per_1000_tx": 6.042211168254504,
+      "alerted_accounts": 140,
+      "alert_precision": 0.8651162790697674,
+      "account_precision": 0.8571428571428571,
+      "account_recall": 0.1406799531066823,
+      "f1": 0.2416918429003021,
+      "false_positive_accounts": 20,
+      "fpr_accounts": 0.0023741690408357074,
+      "tp": 120,
+      "fp": 20,
+      "fn": 733,
+      "tn": 8404
+    },
+    "ML1 Logistic regression (unconstrained)": {
+      "alerts": 709,
+      "alerts_per_week": 78.77777777777777,
+      "alerts_per_1000_tx": 19.9252452013602,
+      "alerted_accounts": 509,
+      "alert_precision": 0.9844851904090268,
+      "account_precision": 0.9783889980353635,
+      "account_recall": 0.5838218053927315,
+      "f1": 0.7312775330396476,
+      "false_positive_accounts": 11,
+      "fpr_accounts": 0.0013057929724596391,
+      "tp": 498,
+      "fp": 11,
+      "fn": 355,
+      "tn": 8413
+    },
+    "ML2 Gradient boosting": {
+      "alerts": 387,
+      "alerts_per_week": 43.0,
+      "alerts_per_1000_tx": 10.875980102858106,
+      "alerted_accounts": 323,
+      "alert_precision": 0.979328165374677,
+      "account_precision": 0.9814241486068112,
+      "account_recall": 0.3716295427901524,
+      "f1": 0.5391156462585034,
+      "false_positive_accounts": 6,
+      "fpr_accounts": 0.0007122507122507123,
+      "tp": 317,
+      "fp": 6,
+      "fn": 536,
+      "tn": 8418
+    },
+    "ML3 Isolation Forest (unsupervised)": {
+      "alerts": 189,
+      "alerts_per_week": 21.0,
+      "alerts_per_1000_tx": 5.311525166512099,
+      "alerted_accounts": 69,
+      "alert_precision": 0.7037037037037037,
+      "account_precision": 0.5797101449275363,
+      "account_recall": 0.04689331770222743,
+      "f1": 0.08676789587852496,
+      "false_positive_accounts": 29,
+      "fpr_accounts": 0.003442545109211776,
+      "tp": 40,
+      "fp": 29,
+      "fn": 813,
+      "tn": 8395
+    }
+  },
+  "ranking": {
+    "B1 Amount threshold": {
+      "roc_auc": 0.5554106143447683,
+      "pr_auc": 0.11136637996860599,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 0.15053763440860216,
+      "recall_top1pct": 0.016412661195779603,
+      "precision_top5pct": 0.125,
+      "recall_top5pct": 0.06799531066822978,
+      "precision_top10pct": 0.12607758620689655,
+      "recall_top10pct": 0.13716295427901523,
+      "precision_top20pct": 0.11644204851752021,
+      "recall_top20pct": 0.2532239155920281
+    },
+    "B2 Amount + velocity": {
+      "roc_auc": 0.7833908923201616,
+      "pr_auc": 0.44496450687530714,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 0.7849462365591398,
+      "recall_top1pct": 0.08558030480656506,
+      "precision_top5pct": 0.6875,
+      "recall_top5pct": 0.37397420867526376,
+      "precision_top10pct": 0.4515086206896552,
+      "recall_top10pct": 0.4912075029308324,
+      "precision_top20pct": 0.2668463611859838,
+      "recall_top20pct": 0.5803048065650644
+    },
+    "B5a Integrated rules (>=2 families)": {
+      "roc_auc": 0.7394695304767599,
+      "pr_auc": 0.36598451653529873,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 0.6989247311827957,
+      "recall_top1pct": 0.07620164126611957,
+      "precision_top5pct": 0.5474137931034483,
+      "recall_top5pct": 0.2977725674091442,
+      "precision_top10pct": 0.3135775862068966,
+      "recall_top10pct": 0.34114888628370454,
+      "precision_top20pct": 0.2560646900269542,
+      "recall_top20pct": 0.5568581477139508
+    },
+    "B5b Integrated risk score (top 1%)": {
+      "roc_auc": 0.7533888966821752,
+      "pr_auc": 0.45728234309761345,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 0.8817204301075269,
+      "recall_top1pct": 0.09613130128956623,
+      "precision_top5pct": 0.6875,
+      "recall_top5pct": 0.37397420867526376,
+      "precision_top10pct": 0.4525862068965517,
+      "recall_top10pct": 0.492379835873388,
+      "precision_top20pct": 0.2706199460916442,
+      "recall_top20pct": 0.5885111371629543
+    },
+    "ML1 Logistic regression (unconstrained)": {
+      "roc_auc": 0.8470486824335984,
+      "pr_auc": 0.712678112716445,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 1.0,
+      "recall_top1pct": 0.10902696365767878,
+      "precision_top5pct": 0.9827586206896551,
+      "recall_top5pct": 0.5345838218053928,
+      "precision_top10pct": 0.5959051724137931,
+      "recall_top10pct": 0.6483001172332943,
+      "precision_top20pct": 0.32452830188679244,
+      "recall_top20pct": 0.7057444314185228
+    },
+    "ML2 Gradient boosting": {
+      "roc_auc": 0.7997339010185825,
+      "pr_auc": 0.5971804791835724,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 1.0,
+      "recall_top1pct": 0.10902696365767878,
+      "precision_top5pct": 0.8362068965517241,
+      "recall_top5pct": 0.4548651817116061,
+      "precision_top10pct": 0.4978448275862069,
+      "recall_top10pct": 0.5416178194607268,
+      "precision_top20pct": 0.2894878706199461,
+      "recall_top20pct": 0.6295427901524033
+    },
+    "ML3 Isolation Forest (unsupervised)": {
+      "roc_auc": 0.8086448977910488,
+      "pr_auc": 0.39853027594143453,
+      "base_rate": 0.09194782796162553,
+      "n_accounts": 9277,
+      "precision_top1pct": 0.6021505376344086,
+      "recall_top1pct": 0.06565064478311841,
+      "precision_top5pct": 0.5431034482758621,
+      "recall_top5pct": 0.2954279015240328,
+      "precision_top10pct": 0.46120689655172414,
+      "recall_top10pct": 0.5017584994138335,
+      "precision_top20pct": 0.29757412398921834,
+      "recall_top20pct": 0.6471277842907386
+    }
+  },
+  "top_decile_capture": 0.492379835873388,
+  "top_decile_rate": 0.4525862068965517,
+  "tier_cutoffs": {
+    "CRITICAL": 99.90046576915715,
+    "HIGH": 99.70012122758885,
+    "MEDIUM": 99.40024245517769,
+    "LOW": 99.00082945192369
+  },
+  "evidence_definition": "persistence: alerted weeks to date",
+  "tiers": {
+    "CRITICAL": {
+      "alerts": 14,
+      "precision": 1.0,
+      "accounts": 4,
+      "share_of_alerts": 0.06511627906976744,
+      "alerts_per_week": 1.5555555555555556
+    },
+    "HIGH": {
+      "alerts": 32,
+      "precision": 0.84375,
+      "accounts": 14,
+      "share_of_alerts": 0.14883720930232558,
+      "alerts_per_week": 3.5555555555555554
+    },
+    "MEDIUM": {
+      "alerts": 74,
+      "precision": 0.8918918918918919,
+      "accounts": 61,
+      "share_of_alerts": 0.34418604651162793,
+      "alerts_per_week": 8.222222222222221
+    },
+    "LOW": {
+      "alerts": 95,
+      "precision": 0.8315789473684211,
+      "accounts": 86,
+      "share_of_alerts": 0.4418604651162791,
+      "alerts_per_week": 10.555555555555555
+    }
+  },
+  "evidence_strength": {
+    "Limited": {
+      "alerts": 111,
+      "precision": 0.8558558558558559
+    },
+    "Moderate": {
+      "alerts": 17,
+      "precision": 0.8235294117647058
+    },
+    "Strong": {
+      "alerts": 87,
+      "precision": 0.8850574712643678
+    }
+  },
+  "alerts_total_all_accounts_test": 540,
+  "alerts_per_week_all_accounts_test": 60.0,
+  "test_tx_all": 48203,
+  "segment_cuts": [
+    0.6666666666666666,
+    1.0
+  ],
+  "segment_overall": {
+    "VEL-01 global": {
+      "alerts": 342,
+      "alert_precision": 0.8421052631578947,
+      "account_recall": 0.21805392731535755
+    },
+    "VEL-01 segment-specific": {
+      "alerts": 298,
+      "alert_precision": 0.5738255033557047,
+      "account_recall": 0.16060961313012895
+    }
+  },
+  "psi_max": 1.978030460780404,
+  "psi_max_feature": "hist_n_tx",
+  "psi_risk_score": 0.15715143776577892,
+  "weekly_precision_range": {
+    "B2 Amount + velocity": [
+      0.25862068965517243,
+      0.4782608695652174
+    ],
+    "B5b Integrated risk score (top 1%)": [
+      0.6666666666666666,
+      1.0
+    ]
+  },
+  "cycles_found": 47,
+  "cycle_members_labelled": 68,
+  "cycle_members_unlabelled": 42,
+  "cycle_rate_labelled": 0.037694013303769404,
+  "cycle_rate_unlabelled": 0.0023107394366197183,
+  "mule_candidates": 85,
+  "mule_candidates_labelled_rate": 0.49411764705882355,
+  "mule_patterns": {
+    "circular-flow member": {
+      "n": 5,
+      "labelled_rate": 0.4
+    },
+    "collector": {
+      "n": 33,
+      "labelled_rate": 0.48484848484848486
+    },
+    "collector-forwarder": {
+      "n": 12,
+      "labelled_rate": 0.9166666666666666
+    },
+    "other combination": {
+      "n": 18,
+      "labelled_rate": 0.3888888888888889
+    },
+    "pass-through": {
+      "n": 17,
+      "labelled_rate": 0.35294117647058826
+    }
+  },
+  "collector_forwarder_n": 12,
+  "collector_forwarder_hub_share": 1.0,
+  "h4_only_integrated": 102,
+  "h4_only_amount": 28,
+  "hypotheses": {
+    "H1": {
+      "description": "Labelled accounts' typical (median) transfer amount differs from unlabelled accounts'",
+      "test": "Mann-Whitney U (two-sided)",
+      "unit": "account",
+      "metric": "median transfer amount, dev period",
+      "n_group1": 1798,
+      "n_group2": 17969,
+      "median_group1": 222.73,
+      "median_group2": 254.83,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 13835998.5,
+      "p_value": 9.35090669278235e-24,
+      "p_holm": 1.87018133855647e-23,
+      "effect_size": -0.14350091007680943,
+      "effect_size_name": "rank-biserial r",
+      "estimate": -32.10000000000002,
+      "estimate_name": "difference in medians (group1 - group2)",
+      "ci_low": -39.33012500000001,
+      "ci_high": -23.86500000000001
+    },
+    "H2": {
+      "description": "Labelled accounts transact at higher velocity (transfers per active week)",
+      "test": "Mann-Whitney U (one-sided, greater)",
+      "unit": "account",
+      "metric": "transfers per active week, dev period",
+      "n_group1": 1798,
+      "n_group2": 17969,
+      "median_group1": 1.8,
+      "median_group2": 1.3333333333333333,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 23320656.0,
+      "p_value": 6.013468024306696e-219,
+      "p_holm": 3.608080814584018e-218,
+      "effect_size": 0.44363420105977847,
+      "effect_size_name": "rank-biserial r",
+      "estimate": 0.4666666666666668,
+      "estimate_name": "difference in medians (group1 - group2)",
+      "ci_low": 0.41666666666666674,
+      "ci_high": 0.5
+    },
+    "H3a": {
+      "description": "Labelled accounts have more distinct senders in their busiest 28-day window",
+      "test": "Mann-Whitney U (one-sided, greater)",
+      "unit": "account",
+      "metric": "max 28-day distinct senders, dev period",
+      "n_group1": 1798,
+      "n_group2": 17969,
+      "median_group1": 3.0,
+      "median_group2": 2.0,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 20926116.0,
+      "p_value": 8.857802078452861e-99,
+      "p_holm": 4.4289010392264306e-98,
+      "effect_size": 0.2954033862917169,
+      "effect_size_name": "rank-biserial r",
+      "estimate": 1.0,
+      "estimate_name": "difference in medians (group1 - group2)",
+      "ci_low": 1.0,
+      "ci_high": 1.0
+    },
+    "H3b": {
+      "description": "Labelled accounts have more distinct receivers in their busiest 28-day window",
+      "test": "Mann-Whitney U (one-sided, greater)",
+      "unit": "account",
+      "metric": "max 28-day distinct receivers, dev period",
+      "n_group1": 1798,
+      "n_group2": 17969,
+      "median_group1": 3.0,
+      "median_group2": 2.0,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 20589803.5,
+      "p_value": 2.852589800447489e-87,
+      "p_holm": 1.1410359201789956e-86,
+      "effect_size": 0.2745844081616027,
+      "effect_size_name": "rank-biserial r",
+      "estimate": 1.0,
+      "estimate_name": "difference in medians (group1 - group2)",
+      "ci_low": 1.0,
+      "ci_high": 1.0
+    },
+    "H3c": {
+      "description": "Labelled accounts participate in time-respecting cycles more often",
+      "test": "Fisher exact (two-sided)",
+      "unit": "account",
+      "metric": "share of accounts on >=1 cycle, full period (descriptive)",
+      "n_group1": 1804,
+      "n_group2": 18176,
+      "median_group1": NaN,
+      "median_group2": NaN,
+      "rate_group1": 0.037694013303769404,
+      "rate_group2": 0.0023107394366197183,
+      "statistic": 16.912332675005487,
+      "p_value": 3.1396832556641178e-43,
+      "p_holm": 9.419049766992353e-43,
+      "effect_size": 16.912332675005487,
+      "effect_size_name": "odds ratio",
+      "estimate": 0.035383273867149685,
+      "estimate_name": "difference in rates; CI is for OR",
+      "ci_low": 11.47587911216912,
+      "ci_high": 24.924190444525745
+    },
+    "H4": {
+      "description": "Among labelled accounts, the integrated score detects cases the amount rule misses",
+      "test": "Exact McNemar (paired, labelled held-out accounts)",
+      "unit": "labelled account",
+      "metric": "detected in test weeks",
+      "n_group1": 120,
+      "n_group2": 46,
+      "median_group1": NaN,
+      "median_group2": NaN,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 74.0,
+      "p_value": 4.4253738468920555e-11,
+      "p_holm": 4.4253738468920555e-11,
+      "effect_size": 3.642857142857143,
+      "effect_size_name": "discordant ratio (A only / B only)",
+      "estimate": 74.0,
+      "estimate_name": "detected only by A (102) minus only by B (28)",
+      "ci_low": NaN,
+      "ci_high": NaN
+    },
+    "H5": {
+      "description": "Integrated score ranks labelled accounts better than amount+velocity (PR-AUC)",
+      "test": "Paired account bootstrap (1,000 resamples) of PR-AUC difference",
+      "unit": "held-out account",
+      "metric": "PR-AUC, test weeks",
+      "n_group1": 9277,
+      "n_group2": 9277,
+      "median_group1": NaN,
+      "median_group2": NaN,
+      "rate_group1": NaN,
+      "rate_group2": NaN,
+      "statistic": 0.012317836222306311,
+      "p_value": NaN,
+      "p_holm": NaN,
+      "effect_size": 0.012317836222306311,
+      "effect_size_name": "PR-AUC difference",
+      "estimate": 0.012317836222306311,
+      "estimate_name": "PR-AUC(integrated) - PR-AUC(B2)",
+      "ci_low": 0.004462985731117401,
+      "ci_high": 0.01982900173296058
+    }
+  },
+  "robust_feature_removal": {
+    "full framework": {
+      "pr_auc": 0.45728234309761345,
+      "alert_precision": 0.8651162790697674,
+      "account_recall": 0.1406799531066823
+    },
+    "without transaction features": {
+      "pr_auc": 0.45724275498148736,
+      "alert_precision": 0.8651162790697674,
+      "account_recall": 0.1406799531066823
+    },
+    "without velocity features": {
+      "pr_auc": 0.2523159598645895,
+      "alert_precision": 0.6382978723404256,
+      "account_recall": 0.08323563892145369
+    },
+    "without behavioral features": {
+      "pr_auc": 0.4302295051965634,
+      "alert_precision": 0.8421052631578947,
+      "account_recall": 0.21805392731535755
+    },
+    "without aml_pattern features": {
+      "pr_auc": 0.45467790319099816,
+      "alert_precision": 0.8525345622119815,
+      "account_recall": 0.1395076201641266
+    },
+    "without network features": {
+      "pr_auc": 0.45967783314248145,
+      "alert_precision": 0.8669724770642202,
+      "account_recall": 0.14302461899179367
+    }
+  },
+  "weight_perturb_pr_auc": {
+    "fitted": 0.45748314421200664,
+    "equal": 0.207302226225732,
+    "random_p05": 0.45025563838211896,
+    "random_p95": 0.4588914048789736
+  },
+  "artifact_neutralised": {
+    "alerts": {
+      "B1 Amount threshold": {
+        "alerts": 481,
+        "alert_precision": 0.10810810810810811,
+        "account_recall": 0.05275498241500586
+      },
+      "B2 Amount + velocity": {
+        "alerts": 700,
+        "alert_precision": 0.32,
+        "account_recall": 0.15123094958968347
+      },
+      "B3 Behavioural anomaly": {
+        "alerts": 315,
+        "alert_precision": 0.5365079365079365,
+        "account_recall": 0.10668229777256741
+      },
+      "B4 Network / AML patterns": {
+        "alerts": 978,
+        "alert_precision": 0.37627811860940696,
+        "account_recall": 0.1477139507620164
+      },
+      "B5a Integrated rules (>=2 families)": {
+        "alerts": 250,
+        "alert_precision": 0.68,
+        "account_recall": 0.09495896834701055
+      },
+      "B5b Integrated risk score (top 1%)": {
+        "alerts": 170,
+        "alert_precision": 0.7764705882352941,
+        "account_recall": 0.06799531066822978
+      }
+    },
+    "ranking": {
+      "B1 Amount threshold": {
+        "pr_auc": 0.11139545884735942,
+        "roc_auc": 0.5554106143447683
+      },
+      "B2 Amount + velocity": {
+        "pr_auc": 0.2848371209142652,
+        "roc_auc": 0.7043046913357582
+      },
+      "B5a Integrated rules (>=2 families)": {
+        "pr_auc": 0.24828588247119018,
+        "roc_auc": 0.6982022001560884
+      },
+      "B5b Integrated risk score (top 1%)": {
+        "pr_auc": 0.27140247038491,
+        "roc_auc": 0.7108398490774418
+      }
+    },
+    "weights": {
+      "max_amt": 0.0,
+      "n_tx": 0.526664413517836,
+      "velocity_ratio": 0.022237212288786685,
+      "new_cp": 0.0,
+      "rapid_movement": 0.0,
+      "cycle_count": 0.05496154130010129,
+      "fan_in_28": 0.036170364572864586,
+      "fan_out_28": 0.15298528309754902,
+      "pagerank_28": 0.0
+    }
+  },
+  "robust_datasets": {
+    "combined (primary)": {
+      "pr_auc": 0.45728234309761345,
+      "alert_precision": 0.8651162790697674,
+      "account_recall": 0.1406799531066823,
+      "base_rate": 0.09194782796162553
+    },
+    "fanin": {
+      "pr_auc": 0.2976259263481208,
+      "alert_precision": 0.480225988700565,
+      "account_recall": 0.15212527964205816,
+      "base_rate": 0.04827735176584944
+    },
+    "cycle": {
+      "pr_auc": 0.3348507373824386,
+      "alert_precision": 0.6289592760180995,
+      "account_recall": 0.2017738359201774,
+      "base_rate": 0.04862009486847779
+    }
+  },
+  "leakage_checks_passed": 10,
+  "leakage_checks_total": 10,
+  "case_accounts": [
+    9998,
+    19743,
+    11887,
+    19994,
+    13255,
+    9904
+  ],
+  "runtime_seconds": 95.87107849121094
+}

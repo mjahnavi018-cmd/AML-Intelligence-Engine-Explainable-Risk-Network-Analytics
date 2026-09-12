@@ -1,0 +1,7 @@
+definition,level,dev_alerts,dev_precision,chosen
+breadth: signal families fired,Limited,25,1.0,False
+breadth: signal families fired,Moderate,120,0.8166666666666667,False
+breadth: signal families fired,Strong,288,0.6388888888888888,False
+persistence: alerted weeks to date,Limited,234,0.6965811965811965,True
+persistence: alerted weeks to date,Moderate,57,0.7368421052631579,True
+persistence: alerted weeks to date,Strong,142,0.7183098591549296,True

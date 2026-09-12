@@ -1,0 +1,5 @@
+risk_level,Limited,Moderate,Strong
+CRITICAL,0,0,14
+HIGH,5,1,26
+MEDIUM,41,6,27
+LOW,65,10,20

@@ -1,0 +1,127 @@
+dataset,section,check,value,status,note
+combined,schema,nodes columns,"nodeid,isFraud,init_balance,fraudStep",PASS,
+combined,schema,transactions columns,"sourceNodeId,targetNodeId,value,time",PASS,
+combined,schema,nodes dtypes,"nodeid:int64,isFraud:int64,init_balance:float64,fraudStep:int64",INFO,
+combined,schema,transactions dtypes,"sourceNodeId:int64,targetNodeId:int64,value:float64,time:int64",INFO,
+combined,volume,node rows,20000,INFO,
+combined,volume,transaction rows,120558,INFO,
+combined,volume,node rows vs metadata.txt,20000 vs 20000,PASS,
+combined,volume,labelled accounts vs metadata.txt,1804 vs 1803,WARN,metadata.txt differs from nodes.csv; nodes.csv is treated as authoritative
+combined,volume,transaction rows vs metadata.txt,120558 vs 120558,PASS,
+combined,missingness,missing values (nodes),0,PASS,
+combined,missingness,missing values (transactions),0,PASS,
+combined,keys_and_integrity,duplicate account ids,0,PASS,
+combined,keys_and_integrity,transactions with unknown sender,0,PASS,
+combined,keys_and_integrity,transactions with unknown receiver,0,PASS,
+combined,keys_and_integrity,unique sending accounts,19980,INFO,
+combined,keys_and_integrity,unique receiving accounts,19807,INFO,
+combined,keys_and_integrity,accounts with no transactions,20,WARN,kept in account table; excluded from behavioural features
+combined,keys_and_integrity,self-transfers (sender == receiver),15,WARN,kept and flagged; excluded from counterparty and network features
+combined,keys_and_integrity,unique directed account pairs,117341,INFO,
+combined,duplicates,exact duplicate rows (extra copies),1684,WARN,"no transaction id exists, so identical (sender, receiver, amount, step) rows cannot be proven to be errors; they are kept as repeated transfers and flagged"
+combined,duplicates,share of duplicated rows between two labelled accounts,1.0,WARN,"if ~1.0 the duplicates are a simulator artifact of the typology generator, not organic behaviour"
+combined,time,step min,1,INFO,
+combined,time,step max,149,INFO,
+combined,time,steps with zero transactions,0,PASS,
+combined,time,non-integer steps,0,PASS,
+combined,time,transactions per step (min / median / max),8 / 917 / 1424,WARN,"volume ramps up and down over the simulation (start/end effects); use relative, not absolute, velocity"
+combined,time,timestamp granularity,"integer simulation step (no clock time, no calendar date)",WARN,time-of-day and day-of-week analysis is impossible
+combined,amounts,amount min,2.51,INFO,
+combined,amounts,amount max,599.91,INFO,
+combined,amounts,zero or negative amounts,0,PASS,
+combined,amounts,amounts below 100 (count),3695,INFO,
+combined,amounts,share of <100 amounts between two labelled accounts,1.0,WARN,AMLSim draws background amounts from a range starting at 100; if this share is ~1.0 the <100 band is a generation artifact and must NOT be used as a detection rule
+combined,amounts,amounts with more than 2 decimals,0,PASS,
+combined,labels,labelled (isFraud=1) accounts,1804,INFO,
+combined,labels,labelled share of accounts,0.0902,WARN,far higher than any realistic prevalence; precision must be re-expressed at realistic prevalence
+combined,labels,transactions touching >=1 labelled account,35837,INFO,
+combined,labels,transactions between two labelled accounts,7885,INFO,
+combined,labels,unlabelled accounts with fraudStep >= 0,0,INFO,
+combined,labels,labelled accounts with fraudStep = -1,906,WARN,fraudStep semantics are undocumented and inconsistent with the label; column excluded from all features and from evaluation
+combined,labels,transaction-level label,not provided,WARN,only account-level labels exist; evaluation is account-level (account-week alerts inherit the account label)
+combined,balances,init_balance min / max,100.04 / 599.92,INFO,
+combined,balances,running balance consistency,not testable,WARN,only an initial balance per account is published; no post-transaction balances exist
+fanin,schema,nodes columns,"nodeid,isFraud,init_balance,fraudStep",PASS,
+fanin,schema,transactions columns,"sourceNodeId,targetNodeId,value,time",PASS,
+fanin,schema,nodes dtypes,"nodeid:int64,isFraud:int64,init_balance:float64,fraudStep:int64",INFO,
+fanin,schema,transactions dtypes,"sourceNodeId:int64,targetNodeId:int64,value:float64,time:int64",INFO,
+fanin,volume,node rows,20000,INFO,
+fanin,volume,transaction rows,118250,INFO,
+fanin,volume,node rows vs metadata.txt,20000 vs 20000,PASS,
+fanin,volume,labelled accounts vs metadata.txt,954 vs 954,PASS,
+fanin,volume,transaction rows vs metadata.txt,118250 vs 118250,PASS,
+fanin,missingness,missing values (nodes),0,PASS,
+fanin,missingness,missing values (transactions),0,PASS,
+fanin,keys_and_integrity,duplicate account ids,0,PASS,
+fanin,keys_and_integrity,transactions with unknown sender,0,PASS,
+fanin,keys_and_integrity,transactions with unknown receiver,0,PASS,
+fanin,keys_and_integrity,unique sending accounts,19980,INFO,
+fanin,keys_and_integrity,unique receiving accounts,19803,INFO,
+fanin,keys_and_integrity,accounts with no transactions,20,WARN,kept in account table; excluded from behavioural features
+fanin,keys_and_integrity,self-transfers (sender == receiver),14,WARN,kept and flagged; excluded from counterparty and network features
+fanin,keys_and_integrity,unique directed account pairs,116521,INFO,
+fanin,duplicates,exact duplicate rows (extra copies),254,WARN,"no transaction id exists, so identical (sender, receiver, amount, step) rows cannot be proven to be errors; they are kept as repeated transfers and flagged"
+fanin,duplicates,share of duplicated rows between two labelled accounts,1.0,WARN,"if ~1.0 the duplicates are a simulator artifact of the typology generator, not organic behaviour"
+fanin,time,step min,1,INFO,
+fanin,time,step max,149,INFO,
+fanin,time,steps with zero transactions,0,PASS,
+fanin,time,non-integer steps,0,PASS,
+fanin,time,transactions per step (min / median / max),5 / 891 / 1373,WARN,"volume ramps up and down over the simulation (start/end effects); use relative, not absolute, velocity"
+fanin,time,timestamp granularity,"integer simulation step (no clock time, no calendar date)",WARN,time-of-day and day-of-week analysis is impossible
+fanin,amounts,amount min,2.52,INFO,
+fanin,amounts,amount max,599.91,INFO,
+fanin,amounts,zero or negative amounts,0,PASS,
+fanin,amounts,amounts below 100 (count),1854,INFO,
+fanin,amounts,share of <100 amounts between two labelled accounts,1.0,WARN,AMLSim draws background amounts from a range starting at 100; if this share is ~1.0 the <100 band is a generation artifact and must NOT be used as a detection rule
+fanin,amounts,amounts with more than 2 decimals,0,PASS,
+fanin,labels,labelled (isFraud=1) accounts,954,INFO,
+fanin,labels,labelled share of accounts,0.0477,WARN,far higher than any realistic prevalence; precision must be re-expressed at realistic prevalence
+fanin,labels,transactions touching >=1 labelled account,20009,INFO,
+fanin,labels,transactions between two labelled accounts,3435,INFO,
+fanin,labels,unlabelled accounts with fraudStep >= 0,0,INFO,
+fanin,labels,labelled accounts with fraudStep = -1,478,WARN,fraudStep semantics are undocumented and inconsistent with the label; column excluded from all features and from evaluation
+fanin,labels,transaction-level label,not provided,WARN,only account-level labels exist; evaluation is account-level (account-week alerts inherit the account label)
+fanin,balances,init_balance min / max,100.04 / 599.92,INFO,
+fanin,balances,running balance consistency,not testable,WARN,only an initial balance per account is published; no post-transaction balances exist
+cycle,schema,nodes columns,"nodeid,isFraud,init_balance,fraudStep",PASS,
+cycle,schema,transactions columns,"sourceNodeId,targetNodeId,value,time",PASS,
+cycle,schema,nodes dtypes,"nodeid:int64,isFraud:int64,init_balance:float64,fraudStep:int64",INFO,
+cycle,schema,transactions dtypes,"sourceNodeId:int64,targetNodeId:int64,value:float64,time:int64",INFO,
+cycle,volume,node rows,20000,INFO,
+cycle,volume,transaction rows,117805,INFO,
+cycle,volume,node rows vs metadata.txt,20000 vs 20000,PASS,
+cycle,volume,labelled accounts vs metadata.txt,945 vs 945,PASS,
+cycle,volume,transaction rows vs metadata.txt,117805 vs 117805,PASS,
+cycle,missingness,missing values (nodes),0,PASS,
+cycle,missingness,missing values (transactions),0,PASS,
+cycle,keys_and_integrity,duplicate account ids,0,PASS,
+cycle,keys_and_integrity,transactions with unknown sender,0,PASS,
+cycle,keys_and_integrity,transactions with unknown receiver,0,PASS,
+cycle,keys_and_integrity,unique sending accounts,19980,INFO,
+cycle,keys_and_integrity,unique receiving accounts,19804,INFO,
+cycle,keys_and_integrity,accounts with no transactions,20,WARN,kept in account table; excluded from behavioural features
+cycle,keys_and_integrity,self-transfers (sender == receiver),14,WARN,kept and flagged; excluded from counterparty and network features
+cycle,keys_and_integrity,unique directed account pairs,116256,INFO,
+cycle,duplicates,exact duplicate rows (extra copies),1420,WARN,"no transaction id exists, so identical (sender, receiver, amount, step) rows cannot be proven to be errors; they are kept as repeated transfers and flagged"
+cycle,duplicates,share of duplicated rows between two labelled accounts,1.0,WARN,"if ~1.0 the duplicates are a simulator artifact of the typology generator, not organic behaviour"
+cycle,time,step min,1,INFO,
+cycle,time,step max,149,INFO,
+cycle,time,steps with zero transactions,0,PASS,
+cycle,time,non-integer steps,0,PASS,
+cycle,time,transactions per step (min / median / max),5 / 887 / 1386,WARN,"volume ramps up and down over the simulation (start/end effects); use relative, not absolute, velocity"
+cycle,time,timestamp granularity,"integer simulation step (no clock time, no calendar date)",WARN,time-of-day and day-of-week analysis is impossible
+cycle,amounts,amount min,10.11,INFO,
+cycle,amounts,amount max,599.91,INFO,
+cycle,amounts,zero or negative amounts,0,PASS,
+cycle,amounts,amounts below 100 (count),1899,INFO,
+cycle,amounts,share of <100 amounts between two labelled accounts,1.0,WARN,AMLSim draws background amounts from a range starting at 100; if this share is ~1.0 the <100 band is a generation artifact and must NOT be used as a detection rule
+cycle,amounts,amounts with more than 2 decimals,0,PASS,
+cycle,labels,labelled (isFraud=1) accounts,945,INFO,
+cycle,labels,labelled share of accounts,0.0473,WARN,far higher than any realistic prevalence; precision must be re-expressed at realistic prevalence
+cycle,labels,transactions touching >=1 labelled account,20935,INFO,
+cycle,labels,transactions between two labelled accounts,3686,INFO,
+cycle,labels,unlabelled accounts with fraudStep >= 0,0,INFO,
+cycle,labels,labelled accounts with fraudStep = -1,482,WARN,fraudStep semantics are undocumented and inconsistent with the label; column excluded from all features and from evaluation
+cycle,labels,transaction-level label,not provided,WARN,only account-level labels exist; evaluation is account-level (account-week alerts inherit the account label)
+cycle,balances,init_balance min / max,100.04 / 599.92,INFO,
+cycle,balances,running balance consistency,not testable,WARN,only an initial balance per account is published; no post-transaction balances exist

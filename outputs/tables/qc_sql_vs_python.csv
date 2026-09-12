@@ -1,0 +1,18 @@
+check,sql_value,python_value,match
+transactions,120558.0,120558.0,True
+total value,33287919.2,33287919.2,True
+accounts,20000.0,20000.0,True
+labelled accounts,1804.0,1804.0,True
+exact duplicate copies,1684.0,1684.0,True
+self transfers,15.0,15.0,True
+integrated alerts (dev),784.0,784.0,True
+VEL-01 alerts (dev),1185.0,1185.0,True
+integrated alerts (test),540.0,540.0,True
+VEL-01 alerts (test),837.0,837.0,True
+alert queue size,1324.0,1324.0,True
+tier precision CRITICAL (held-out test),1.0,1.0,True
+tier precision HIGH (held-out test),0.844,0.844,True
+tier precision MEDIUM (held-out test),0.892,0.892,True
+tier precision LOW (held-out test),0.832,0.832,True
+weekly volume series,120558.0,120558.0,True
+reciprocity %,0.52,0.52,True

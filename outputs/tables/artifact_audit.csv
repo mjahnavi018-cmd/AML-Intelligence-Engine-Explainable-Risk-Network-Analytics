@@ -1,0 +1,5 @@
+artifact,observation,share_between_labelled_accounts,base_share,consequence
+A1 sub-100 amounts,3695 transfers below 100,1.0,0.06540420378572968,Any amount rule tuned to small values would reproduce the label; not used.
+A2 exact duplicate transfers,1684 extra identical copies,1.0,0.06540420378572968,Repeated-transfer rule AML-02 excluded from the framework.
+A3 counterparty recurrence,905 of 117326 directed pairs transact more than once,1.0,0.06540420378572968,Background relationships are one-off; models rewarding 'few new counterparties' exploit the simulator and would not transfer to real banking.
+A3b recurring counterparty in an account-week (dev),labelled 0.0377 vs unlabelled 0.0003,,,Same artifact measured on monitoring features.

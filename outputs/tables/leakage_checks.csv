@@ -1,0 +1,11 @@
+check,result,evidence
+Future transactions cannot change past features (recompute after deleting all later transactions),PASS,week 5: identical; week 12: identical; week 16: identical; week 21: identical
+No label or label-derived column is a feature or signal input,PASS,"feature inputs: ['amount_log_ratio', 'cycle_count', 'fan_in_28', 'fan_out_28', 'is_reactivated', 'max_amt', 'max_repeat_same_cp', 'n_tx', 'new_cp', 'pagerank_28', 'rapid_movement', 'velocity_ratio']"
+Full-period (look-ahead) descriptive metrics are not used for scoring,PASS,scoring uses only *_28 window and weekly/historical features
+Rule thresholds reproduce exactly from development weeks alone,PASS,12 thresholds recomputed
+Model-fitting rows are development weeks only,PASS,max fitting week = 12
+No account overlap between fitting accounts and held-out evaluation accounts,PASS,"9965 fitting accounts, 9277 held-out accounts, overlap 0"
+Exact-duplicate transfers never straddle development and test periods,PASS,2235 duplicated rows; groups spanning both periods: 0
+Behavioural baseline counts only transactions strictly before the current week (200-row spot check),PASS,hist_n_tx recomputed independently for 200 random account-weeks in week 15
+Priority-tier cut-offs are computed from development-period alerts only,PASS,tier_cutoffs(run.score[run.alert & dev]) in pipeline.py; applied unchanged to test weeks
+Evidence persistence counts only current and earlier weekly alerts,PASS,cumulative sum ordered by week (alert_prioritization.alert_persistence)
