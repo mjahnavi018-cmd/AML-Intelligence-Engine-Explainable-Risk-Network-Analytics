@@ -10,7 +10,7 @@
 |---|---|
 | **What** | Weekly, point-in-time monitoring of 120,558 synthetic transfers between 20,000 accounts: 12 documented rules, an explainable integrated risk score, a prioritised alert queue with ranked evidence, network/mule analytics, and a Streamlit investigation dashboard. |
 | **Why** | Banks must find the few accounts worth investigating without drowning analysts in alerts. In India, card/internet frauds were 56% of 2024-25 bank fraud cases but 1.4% of value (RBI) - many small, fast cases. |
-| **Data** | Official IBM AMLSim sample (Apache-2.0): sender, receiver, amount, day step, AML-typology label.No payment-fraud label exists, so no supervised fraud detection is claimed. |
+| **Data** | Official IBM AMLSim sample (Apache-2.0): sender, receiver, amount, day step, AML-typology label. No payment-fraud label exists, so no supervised fraud detection is claimed. |
 | **Method** | SQL + Python pipeline → data audit → point-in-time features → label-free rule thresholds → non-negative logistic risk score → priority tiers → evaluation on a held-out half of accounts in later weeks, with leakage checks and robustness tests. |
 | **Result** | 215 alerts at 86.5% precision vs 807 at 40.6% for an amount+velocity rule (73% fewer alerts; recall 14.1% vs 24.4%). For ranking, the integrated score is only marginally better (PR-AUC 0.457 vs 0.445). |
 | **Business value** | Quantifies the detection ↔ workload trade-off, shows which signals are worth their alerts, and gives investigators "why flagged" evidence per account. |
