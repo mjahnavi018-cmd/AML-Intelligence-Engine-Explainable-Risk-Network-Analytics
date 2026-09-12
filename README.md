@@ -1,6 +1,4 @@
 # AML-Intelligence-Engine-Explainable-Risk-Network-Analytics
-# AML Intelligence Engine — Explainable Risk & Network Analytics
-
 ### Can explainable transaction signals identify high-risk accounts without overwhelming investigators?
 
 An end-to-end transaction-monitoring framework combining **behavioural, transactional, rule-based, and network signals** to prioritise potential AML activity and provide investigators with evidence explaining why an account was flagged.
