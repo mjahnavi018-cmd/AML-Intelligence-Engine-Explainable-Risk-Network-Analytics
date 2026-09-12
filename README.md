@@ -74,25 +74,6 @@ The project evaluates detection performance together with the **investigator wor
 
 ---
 
-## Explainability & Network Analysis
-
-The risk score provides interpretable evidence for each alert, including:
-
-* Triggered signals
-* Behaviour relative to the account's own baseline
-* Transaction patterns
-* Counterparty relationships
-* Network structure
-* Potential collection and forwarding behaviour
-
-<p align="center">
-  <img src="outputs/figures/fig16_why_not_ml.png" width="48%" alt="Why not just use ML"/>
-  <img src="outputs/figures/fig19_case2_network.png" width="40%" alt="Potential mule candidate network"/>
-</p>
-
-The analysis shows why **explainability and robustness matter alongside predictive performance**.
-
----
 
 ## Dashboard
 
